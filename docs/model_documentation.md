@@ -110,7 +110,7 @@ Corporate IRB function (BCBS CRE31): correlation R = 0.12w + 0.24(1 − w), w = 
 ### 3.9 Capital projection
 Impairment_t = ECL_t − ECL_{t−1}; after-tax profit = (PPNR − impairment) × (1 − 25%); IRB EL shortfall max(0, regulatory EL − ECL) deducted from CET1; CET1 ratio = CET1 / (portfolio RWA + other RWA). Starting CET1 ratio 14.0%, other RWA 1.25× portfolio RWA, PPNR 80 bps of starting EAD, hurdle 10%.
 
-**Interaction worth noting:** because 85% of limits are on F-IRB, a lower best-estimate LGD reduces ECL but not regulatory EL, increasing the IRB shortfall deduction — so the "LGD −5pp" sensitivity barely moves the CET1 trough (−0.3 bps) despite lowering impairments by ~USD 1.8bn.
+**Interaction worth noting:** because 85% of limits are on F-IRB, a lower best-estimate LGD reduces ECL but not regulatory EL, increasing the IRB shortfall deduction — so the "LGD −5pp" sensitivity lowers impairments by ~USD 1.6bn yet leaves the CET1 trough slightly lower (−3 bps).
 
 ## 4. Validation, testing and benchmarking
 
