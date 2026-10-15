@@ -1,10 +1,10 @@
 {
   "run_id": "sample_MST_2026Q4",
-  "created_utc": "2026-10-15T06:39:08+00:00",
+  "created_utc": "2026-10-15T06:42:23+00:00",
   "as_of_date": "2026-09-30",
   "seed": 2026,
   "package_version": "1.0.0",
-  "git_commit": "dfa5317",
+  "git_commit": "caafa34",
   "python": "3.13.16",
   "scenarios": [
     "baseline",
@@ -30,31 +30,31 @@
       "step": "02",
       "name": "macro history & scenarios",
       "status": "OK",
-      "seconds": 0.008
+      "seconds": 0.006
     },
     {
       "step": "03",
       "name": "data ingestion (synthetic CIB portfolio and default history)",
       "status": "OK",
-      "seconds": 1.469
+      "seconds": 1.638
     },
     {
       "step": "04",
       "name": "data-quality rules & remediation",
       "status": "OK",
-      "seconds": 0.037
+      "seconds": 0.062
     },
     {
       "step": "05",
       "name": "PD scorecard development & master scale",
       "status": "OK",
-      "seconds": 0.107
+      "seconds": 0.16
     },
     {
       "step": "06",
       "name": "Z-factor challenger & scenario runs",
       "status": "OK",
-      "seconds": 0.427
+      "seconds": 0.442
     },
     {
       "step": "07",
@@ -66,25 +66,25 @@
       "step": "08",
       "name": "reconciliation controls",
       "status": "OK",
-      "seconds": 0.01
+      "seconds": 0.014
     },
     {
       "step": "09",
       "name": "plausibility checks",
       "status": "OK",
-      "seconds": 0.018
+      "seconds": 0.026
     },
     {
       "step": "10",
       "name": "sensitivity analysis (severe)",
       "status": "OK",
-      "seconds": 1.893
+      "seconds": 1.712
     },
     {
       "step": "11",
       "name": "model monitoring",
       "status": "OK",
-      "seconds": 4.145
+      "seconds": 3.429
     }
   ],
   "dq": {

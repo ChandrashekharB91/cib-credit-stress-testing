@@ -1,9 +1,9 @@
 # UAT / UVT sign-off report — CIB Management Stress Testing engine
 
 - **Date:** 2026-10-15
-- **Build:** package 1.0.0, git `uncommitted`
+- **Build:** package 1.0.0, git `caafa34`
 - **Environment:** Python 3.13.16; 
-- **Run under test:** `uat_main` (results SHA-256 `6894840a5c136e03…`)
+- **Run under test:** `uat_main` (results SHA-256 `4ea85f40217c9ae7…`)
 - **Seeded defect:** SICR absolute-threshold condition dropped (relative test applied alone)
 
 ## Summary
@@ -48,7 +48,7 @@
 | UAT-ECL-002 | ECL | PASS | ECL 2.189486 vs 2.189486 |
 | UAT-ECL-003 | ECL | PASS | ECL 0.397146 vs 0.397146 |
 | UAT-ECL-004 | ECL | PASS | PD(H+1) 0.028784 vs 0.028784; PD(H+2) 0.010000 |
-| UAT-ECL-005 | ECL | PASS | weighted ECL 3,839.291 vs 3,839.291 |
+| UAT-ECL-005 | ECL | PASS | weighted ECL 3,556.371 vs 3,556.371 |
 | UAT-STG-001 | Staging | PASS | stage flags [1, 2] |
 | UAT-STG-002 | Staging | PASS | stage 2 |
 | UAT-STG-003 | Staging | PASS | stage 2 |
@@ -57,9 +57,9 @@
 | UAT-DQ-002 | Data quality | PASS | 59 obligors with overlay x1.641; 59 stale |
 | UAT-E2E-001 | End to end | PASS | 11 controls, 0 failed |
 | UAT-E2E-002 | End to end | PASS | 17 checks: {'PASS': 16, 'AMBER': 1} |
-| UAT-E2E-003 | End to end | PASS | 6894840a5c13 vs 6894840a5c13 |
-| UAT-E2E-004 | End to end | PASS | 6894840a5c13 vs 8dc460ba672a |
+| UAT-E2E-003 | End to end | PASS | 4ea85f40217c vs 4ea85f40217c |
+| UAT-E2E-004 | End to end | PASS | 4ea85f40217c vs ae518c317f0e |
 | UAT-E2E-005 | End to end | PASS | missing []; 11 steps OK=True |
-| UAT-RVER-001 | Independent verification | PASS | 24 comparisons, 0 failed; max rel diff 2.9e-17 |
+| UAT-RVER-001 | Independent verification | PASS | 24 comparisons, 0 failed; max rel diff 2.1e-17 |
 | UAT-RVER-002 | Independent verification | FAIL | 36 comparisons, 24 failed; max rel diff 5.2e-03 |
 | UAT-RPT-001 | Reporting | PASS | 11/11 sections; sheets ok=True |
