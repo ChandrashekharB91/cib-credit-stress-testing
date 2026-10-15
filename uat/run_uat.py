@@ -357,8 +357,11 @@ def main(argv=None) -> int:
 
 
 def _signoff(out: Path, res: pd.DataFrame, dl: pd.DataFrame, u: UAT, defect: str | None) -> None:
-    r_ver = subprocess.run(["Rscript", "--version"], capture_output=True, text=True).stderr.strip() \
-        if shutil.which("Rscript") else "not available"
+    if shutil.which("Rscript"):
+        rv = subprocess.run(["Rscript", "--version"], capture_output=True, text=True)
+        r_ver = (rv.stdout.strip() or rv.stderr.strip())
+    else:
+        r_ver = "Rscript not available"
     m = u.runs["main"].manifest
     by_area = res.groupby("area")["result"].agg(lambda s: f"{(s == 'PASS').sum()}/{len(s)}").reset_index()
     blocking = dl[dl["severity"].isin(["S1", "S2"])]

@@ -1,8 +1,8 @@
 # UAT / UVT sign-off report — CIB Management Stress Testing engine
 
 - **Date:** 2026-10-15
-- **Build:** package 1.0.0, git `caafa34`
-- **Environment:** Python 3.13.16; 
+- **Build:** package 1.0.0, git `73c8153`
+- **Environment:** Python 3.13.16; Rscript (R) version 4.3.3 (2024-02-29)
 - **Run under test:** `uat_main` (results SHA-256 `4ea85f40217c9ae7…`)
 - **Seeded defect:** SICR absolute-threshold condition dropped (relative test applied alone)
 
