@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      - run: pytest
+
+  uat:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: r-lib/actions/setup-r@v2
+      - run: pip install -e ".[dev]"
+      - name: UAT incl. independent R verification
+        run: python uat/run_uat.py --out uat_ci_results
+      - name: Seeded-defect demo must be caught (expect non-zero exit)
+        run: |
+          if python uat/run_uat.py --inject-defect sicr_and_rule --out uat_ci_defect; then
+            echo "Seeded defect was NOT detected"; exit 1
+          else
+            echo "Seeded defect detected as expected"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uat-evidence
+          path: |
+            uat_ci_results
+            uat_ci_defect

@@ -1,0 +1,88 @@
+# Data-quality rules applied before every MST run.
+# severity: critical rules block the run unless remediated; major/minor are remediated and logged.
+rules:
+  - id: DQ-001
+    table: obligors
+    dimension: completeness
+    description: Sector must be populated
+    check: not_null
+    column: sector
+    severity: critical
+    remediation: map_sector_from_industry_code
+  - id: DQ-002
+    table: obligors
+    dimension: validity
+    description: Revenue must be strictly positive
+    check: positive
+    column: revenue
+    severity: critical
+    remediation: exclude_and_escalate
+  - id: DQ-003
+    table: obligors
+    dimension: consistency
+    description: EBITDA cannot exceed revenue
+    check: le_column
+    column: ebitda
+    other: revenue
+    severity: major
+    remediation: cap_ebitda_at_margin_p99
+  - id: DQ-004
+    table: obligors
+    dimension: timeliness
+    description: Financial statements no older than 18 months at the reporting date
+    check: max_age_months
+    column: financials_date
+    limit: 18
+    severity: major
+    remediation: one_notch_conservative_downgrade
+  - id: DQ-005
+    table: facilities
+    dimension: consistency
+    description: Drawn balance cannot exceed approved limit
+    check: le_column
+    column: drawn
+    other: limit
+    severity: major
+    remediation: cap_drawn_at_limit
+  - id: DQ-006
+    table: facilities
+    dimension: validity
+    description: Remaining maturity must be positive
+    check: positive
+    column: maturity_years
+    severity: major
+    remediation: set_to_one_year
+  - id: DQ-007
+    table: facilities
+    dimension: integrity
+    description: Every facility must reference an existing obligor
+    check: foreign_key
+    column: obligor_id
+    other: obligors.obligor_id
+    severity: critical
+    remediation: exclude_and_escalate
+  - id: DQ-008
+    table: facilities
+    dimension: uniqueness
+    description: Facility identifiers must be unique
+    check: unique
+    column: facility_id
+    severity: critical
+    remediation: drop_duplicates_keep_first
+  - id: DQ-009
+    table: facilities
+    dimension: validity
+    description: Collateral value cannot be negative
+    check: non_negative
+    column: collateral_value
+    severity: minor
+    remediation: set_to_zero
+  - id: DQ-010
+    table: facilities
+    dimension: reconciliation
+    description: Drawn balances reconcile to finance ledger control totals by region (0.5% tolerance)
+    check: reconcile_ledger
+    column: drawn
+    tolerance: 0.005
+    severity: major
+    remediation: escalate_to_finance

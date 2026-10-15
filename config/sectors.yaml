@@ -1,0 +1,194 @@
+# Sector parameters for the synthetic CIB portfolio and the stressed-financials satellite model.
+#   share            portfolio share of obligors
+#   rev_median_musd  median annual revenue (USD m); rev_sigma = lognormal dispersion
+#   margin_mean/sd   EBITDA margin
+#   leverage_median  gross Debt / EBITDA
+#   capex_ratio      capex / revenue
+#   floating_share   share of debt at floating rates
+#   trend_growth     nominal revenue growth at trend GDP
+#   beta_gdp         revenue growth sensitivity to (regional GDP growth - regional trend)
+#   beta_oil         revenue growth sensitivity to oil price % change
+#   beta_property    revenue growth sensitivity to (property price growth - trend)
+#   dol              degree of operating leverage (EBITDA growth multiple of revenue shock)
+#   risk_premium     latent log-odds premium used only in the synthetic data generator
+#   collateral       typical collateral type for secured facilities
+#   cyclicality      strength of ratio co-movement with the cycle in the synthetic history
+sectors:
+  oil_gas:
+    share: 0.09
+    rev_median_musd: 900
+    rev_sigma: 1.1
+    margin_mean: 0.24
+    margin_sd: 0.07
+    leverage_median: 2.4
+    capex_ratio: 0.14
+    floating_share: 0.5
+    trend_growth: 0.04
+    beta_gdp: 1.0
+    beta_oil: 0.65
+    beta_property: 0.0
+    dol: 2.2
+    risk_premium: 0.15
+    collateral: commodity
+    cyclicality: 1.2
+  metals_mining:
+    share: 0.07
+    rev_median_musd: 700
+    rev_sigma: 1.1
+    margin_mean: 0.22
+    margin_sd: 0.07
+    leverage_median: 2.2
+    capex_ratio: 0.12
+    floating_share: 0.5
+    trend_growth: 0.04
+    beta_gdp: 1.6
+    beta_oil: 0.15
+    beta_property: 0.1
+    dol: 2.4
+    risk_premium: 0.20
+    collateral: commodity
+    cyclicality: 1.3
+  commercial_real_estate:
+    share: 0.10
+    rev_median_musd: 150
+    rev_sigma: 1.0
+    margin_mean: 0.55
+    margin_sd: 0.10
+    leverage_median: 5.5
+    capex_ratio: 0.05
+    floating_share: 0.65
+    trend_growth: 0.035
+    beta_gdp: 0.6
+    beta_oil: 0.0
+    beta_property: 0.7
+    dol: 1.6
+    risk_premium: -0.7
+    collateral: property
+    cyclicality: 1.2
+  manufacturing:
+    share: 0.15
+    rev_median_musd: 400
+    rev_sigma: 1.2
+    margin_mean: 0.12
+    margin_sd: 0.04
+    leverage_median: 2.5
+    capex_ratio: 0.05
+    floating_share: 0.45
+    trend_growth: 0.04
+    beta_gdp: 1.8
+    beta_oil: -0.05
+    beta_property: 0.0
+    dol: 2.8
+    risk_premium: 0.0
+    collateral: receivables
+    cyclicality: 1.1
+  consumer_retail:
+    share: 0.10
+    rev_median_musd: 350
+    rev_sigma: 1.1
+    margin_mean: 0.10
+    margin_sd: 0.03
+    leverage_median: 2.8
+    capex_ratio: 0.04
+    floating_share: 0.4
+    trend_growth: 0.045
+    beta_gdp: 1.2
+    beta_oil: -0.03
+    beta_property: 0.05
+    dol: 2.5
+    risk_premium: 0.05
+    collateral: receivables
+    cyclicality: 0.9
+  tmt:
+    share: 0.09
+    rev_median_musd: 500
+    rev_sigma: 1.3
+    margin_mean: 0.30
+    margin_sd: 0.09
+    leverage_median: 2.6
+    capex_ratio: 0.15
+    floating_share: 0.35
+    trend_growth: 0.05
+    beta_gdp: 0.8
+    beta_oil: 0.0
+    beta_property: 0.0
+    dol: 1.8
+    risk_premium: -0.10
+    collateral: none
+    cyclicality: 0.7
+  utilities_infra:
+    share: 0.08
+    rev_median_musd: 600
+    rev_sigma: 1.0
+    margin_mean: 0.35
+    margin_sd: 0.08
+    leverage_median: 4.5
+    capex_ratio: 0.18
+    floating_share: 0.25
+    trend_growth: 0.035
+    beta_gdp: 0.4
+    beta_oil: 0.0
+    beta_property: 0.0
+    dol: 1.4
+    risk_premium: -0.6
+    collateral: none
+    cyclicality: 0.5
+  financial_institutions:
+    share: 0.12
+    rev_median_musd: 800
+    rev_sigma: 1.4
+    margin_mean: 0.40
+    margin_sd: 0.10
+    leverage_median: 3.0
+    capex_ratio: 0.02
+    floating_share: 0.6
+    trend_growth: 0.045
+    beta_gdp: 1.1
+    beta_oil: 0.0
+    beta_property: 0.15
+    dol: 2.0
+    risk_premium: -0.40
+    collateral: cash
+    cyclicality: 0.9
+  shipping_transport:
+    share: 0.08
+    rev_median_musd: 300
+    rev_sigma: 1.1
+    margin_mean: 0.18
+    margin_sd: 0.06
+    leverage_median: 3.8
+    capex_ratio: 0.14
+    floating_share: 0.6
+    trend_growth: 0.04
+    beta_gdp: 1.7
+    beta_oil: -0.12
+    beta_property: 0.0
+    dol: 2.6
+    risk_premium: 0.1
+    collateral: commodity
+    cyclicality: 1.3
+  commodity_traders:
+    share: 0.12
+    rev_median_musd: 2500
+    rev_sigma: 1.2
+    margin_mean: 0.035
+    margin_sd: 0.012
+    leverage_median: 3.2
+    capex_ratio: 0.005
+    floating_share: 0.85
+    trend_growth: 0.04
+    beta_gdp: 1.0
+    beta_oil: 0.35
+    beta_property: 0.0
+    dol: 3.0
+    risk_premium: 0.20
+    collateral: commodity
+    cyclicality: 1.0
+
+# trend_gdp: regional trend real GDP growth (%); sector revenue grows at trend when GDP is at trend
+regions:
+  GCNA: {share: 0.30, name: "Greater China & North Asia", trend_gdp: 4.0}
+  ASA:  {share: 0.30, name: "ASEAN & South Asia", trend_gdp: 5.0}
+  AME:  {share: 0.25, name: "Africa & Middle East", trend_gdp: 3.8}
+  EA:   {share: 0.15, name: "Europe & Americas", trend_gdp: 1.9}
+property_trend_growth: 3.0

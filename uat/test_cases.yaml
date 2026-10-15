@@ -1,0 +1,162 @@
+# UAT / UVT test catalogue for the CIB Management Stress Testing engine.
+# Severity if failed: S1 critical (blocks sign-off), S2 major (blocks sign-off), S3 minor (sign-off with remediation plan)
+# Expected results are derived independently of the engine: published BCBS values, closed-form hand
+# calculations written out in the test, seeded ground truth, or the independent R implementation.
+cases:
+  # ------------------------------------------------------------------ RWA
+  - id: UAT-RWA-001
+    area: RWA
+    requirement: REQ-RWA-01 Corporate IRB risk-weight function (BCBS CRE31)
+    description: Risk weights for 19 PDs at LGD 45%, M 2.5 reproduce the BCBS illustrative corporate risk-weight table
+    expected: Absolute difference <= 0.01 percentage points for every PD
+    severity: S1
+  - id: UAT-RWA-002
+    area: RWA
+    requirement: REQ-RWA-02 SME firm-size adjustment
+    description: Correlation reduced by 0.04 x (1 - (S - 5)/45) for turnover S < 50m; no adjustment at S >= 50m
+    expected: R(PD 1%, S 5) = R(PD 1%) - 0.04; R(PD 1%, S 27.5) = R(PD 1%) - 0.02; R(PD 1%, S 60) = R(PD 1%)
+    severity: S2
+  - id: UAT-RWA-003
+    area: RWA
+    requirement: REQ-RWA-03 Large financial institution correlation multiplier
+    description: Asset correlation multiplied by 1.25 for regulated FIs with total assets >= 100bn
+    expected: R(large FI) / R(other) = 1.25 exactly
+    severity: S2
+  - id: UAT-RWA-004
+    area: RWA
+    requirement: REQ-RWA-04 Effective maturity floor and cap
+    description: Effective maturity used in the capital formula is bounded to [1, 5] years for every facility
+    expected: min(M) >= 1 and max(M) <= 5 on the production portfolio; maturity adjustment (1 + (M - 2.5) b) / (1 - 1.5 b) = 1 at M = 1
+    severity: S2
+  - id: UAT-RWA-005
+    area: RWA
+    requirement: REQ-RWA-05 Corporate PD floor (5 bps)
+    description: Regulatory PD never falls below the configured floor
+    expected: min(regulatory PD) >= 0.0005 across all scenarios and dates
+    severity: S2
+  - id: UAT-RWA-006
+    area: RWA
+    requirement: REQ-RWA-06 Defaulted exposures
+    description: F-IRB defaulted risk weight is zero; A-IRB defaulted K = max(0, downturn LGD - best-estimate LGD)
+    expected: Engine RWA for defaulted facilities equals the hand formula to 1e-9
+    severity: S1
+  # ------------------------------------------------------------------ ECL
+  - id: UAT-ECL-001
+    area: ECL
+    requirement: REQ-ECL-01 Stage 1 12-month ECL
+    description: "Single facility: PD 2%, LGD 40%, EAD 100, EIR 5%, maturity 3y, Stage 1"
+    expected: ECL = 0.02 x 0.40 x 100 x 1.05^-0.5 = 0.780720
+    severity: S1
+  - id: UAT-ECL-002
+    area: ECL
+    requirement: REQ-ECL-02 Stage 2 lifetime ECL
+    description: Same facility forced into Stage 2 by the watchlist backstop
+    expected: ECL = sum_k 0.98^(k-1) x 0.02 x 40 x 1.05^-(k-0.5), k = 1..3 = 2.189486
+    severity: S1
+  - id: UAT-ECL-003
+    area: ECL
+    requirement: REQ-ECL-03 Partial final period
+    description: "Maturity 0.5y: period PD = 1 - (1 - q)^0.5, discounted at mid-period (0.25y)"
+    expected: ECL = (1 - 0.98^0.5) x 40 x 1.05^-0.25
+    severity: S2
+  - id: UAT-ECL-004
+    area: ECL
+    requirement: REQ-ECL-04 Post-horizon PD reversion
+    description: After the horizon the annual PD reverts in logit space to the reporting-date PD over the reversion period
+    expected: PD(H+1) = expit(0.5 logit(PD_H) + 0.5 logit(PD_0)); PD(H+2) = PD_0
+    severity: S2
+  - id: UAT-ECL-005
+    area: ECL
+    requirement: REQ-ECL-05 Probability-weighted ECL
+    description: Reported reporting-date ECL is the scenario-weighted average of scenario ECLs
+    expected: Weighted ECL = sum(w_s x ECL_s,t0) with weights from configuration
+    severity: S1
+  # ------------------------------------------------------------------ Staging
+  - id: UAT-STG-001
+    area: Staging
+    requirement: REQ-STG-01 SICR requires relative AND absolute deterioration
+    description: "PD 0.6% vs origination 0.2% (3x but +40 bps) stays Stage 1; PD 3% vs 1% (3x, +200 bps) moves to Stage 2"
+    expected: Stage flags [1, 2]
+    severity: S1
+  - id: UAT-STG-002
+    area: Staging
+    requirement: REQ-STG-02 Watchlist backstop
+    description: Obligor rated on the watchlist grade or worse is Stage 2 regardless of origination PD
+    expected: Stage 2
+    severity: S2
+  - id: UAT-STG-003
+    area: Staging
+    requirement: REQ-STG-03 30 days-past-due backstop
+    description: Facility with 30+ days past due is Stage 2
+    expected: Stage 2
+    severity: S2
+  - id: UAT-STG-004
+    area: Staging
+    requirement: REQ-STG-04 Defaulted exposures in Stage 3
+    description: Defaulted facility has zero survival, ECL = LGD x EAD, and is never flagged Stage 2
+    expected: ECL = LGD x EAD; stage2 = False
+    severity: S1
+  # ------------------------------------------------------------------ Data quality
+  - id: UAT-DQ-001
+    area: Data quality
+    requirement: REQ-DQ-01 Detection of seeded data defects
+    description: Every seeded defect (10 rules) is detected by the DQ engine
+    expected: Recall = 100% for every rule
+    severity: S1
+  - id: UAT-DQ-002
+    area: Data quality
+    requirement: REQ-DQ-02 Conservative treatment of stale financials
+    description: Obligors with financials older than 18 months receive a one-notch PD overlay
+    expected: pd_overlay_mult > 1 for exactly the stale obligors
+    severity: S2
+  # ------------------------------------------------------------------ End to end
+  - id: UAT-E2E-001
+    area: End to end
+    requirement: REQ-RUN-01 Run controls
+    description: Facility count, EAD recomputation, cross-scenario consistency and sector aggregation controls
+    expected: All controls PASS
+    severity: S1
+  - id: UAT-E2E-002
+    area: End to end
+    requirement: REQ-RUN-02 Plausibility of outputs
+    description: Automated plausibility checks raise no FAIL (AMBER items require documented commentary)
+    expected: No FAIL
+    severity: S1
+  - id: UAT-E2E-003
+    area: End to end
+    requirement: REQ-RUN-03 Reproducibility
+    description: Two runs with identical configuration and seed produce byte-identical results
+    expected: Identical results SHA-256
+    severity: S1
+  - id: UAT-E2E-004
+    area: End to end
+    requirement: REQ-RUN-04 Configuration sensitivity
+    description: Changing the seed changes the results (configuration is actually consumed)
+    expected: Different results SHA-256
+    severity: S3
+  - id: UAT-E2E-005
+    area: End to end
+    requirement: REQ-RUN-05 Audit trail
+    description: Run manifest records input hashes, git commit, package version, step timings and outcome
+    expected: All manifest fields present and every step status OK
+    severity: S2
+  # ------------------------------------------------------------------ Independent verification (UVT)
+  - id: UAT-RVER-001
+    area: Independent verification
+    requirement: REQ-UVT-01 Independent recomputation of RWA and regulatory EL
+    description: Base-R re-implementation recomputes RWA and EL for every facility, scenario and date
+    expected: Differences <= 1e-8 relative
+    severity: S1
+  - id: UAT-RVER-002
+    area: Independent verification
+    requirement: REQ-UVT-02 Independent recomputation of survival, staging and ECL
+    description: Base-R re-implementation recomputes survival, Stage 2 flags and ECL for every facility, scenario and date
+    expected: Differences <= 1e-8 relative
+    severity: S1
+  # ------------------------------------------------------------------ Reporting
+  - id: UAT-RPT-001
+    area: Reporting
+    requirement: REQ-RPT-01 Management reporting outputs
+    description: Dashboard, committee pack and Excel workbook are produced and contain the required sections
+    expected: Files exist; pack has the 11 numbered sections; workbook has the KPI, capital and checks sheets
+    severity: S2

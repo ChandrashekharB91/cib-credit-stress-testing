@@ -1,0 +1,93 @@
+# Management Stress Test run configuration.
+# Every run writes this file (and its SHA-256) into the run manifest for audit.
+run:
+  name: MST_2026Q4
+  as_of_date: "2026-09-30"
+  seed: 2026
+  output_dir: outputs/runs
+
+files:
+  scenarios: config/scenarios.yaml
+  sectors: config/sectors.yaml
+  macro_history: config/macro_history.csv
+  dq_rules: config/dq_rules.yaml
+
+portfolio:
+  n_obligors: 1500
+  history_start: 2006
+  history_end: 2025
+  history_obligors_per_year: 1500
+  dev_end_year: 2021            # 2006-2021 development sample, 2022-2025 out-of-time
+  bank_share_of_debt: [0.08, 0.30]
+  initial_default_rate: 0.012   # share of obligors already in default at the reporting date
+  inject_dq_issues: true        # seed realistic data-quality defects for the DQ engine
+
+pd_model:
+  asset_correlation_generator: 0.08   # systematic factor loading used by the synthetic generator
+  long_run_default_rate: null         # null = use observed development-sample default rate
+
+lgd:
+  unsecured_base: 0.45
+  subordinated_base: 0.75
+  workout_cost: 0.05
+  floor: 0.05
+  downturn_addon: 0.08
+  collateral_haircut:            # haircut to collateral market value at the reporting date
+    property: 0.30
+    commodity: 0.35
+    receivables: 0.30
+    cash: 0.0
+  collateral_stress_driver:      # macro driver applied to collateral value along the path
+    property: property_price_growth
+    commodity: oil_price_change
+    receivables: gdp_growth
+    cash: none
+
+ead:
+  ccf_model: {term_loan: 1.0, rcf: 0.60, trade_finance: 0.20, guarantee: 0.50}
+  ccf_stress_uplift: {baseline: 0.0, adverse: 0.05, severe: 0.10}
+
+ifrs9:
+  scenario_weights: {baseline: 0.60, adverse: 0.30, severe: 0.10}
+  sicr_relative_threshold: 2.5    # 12m PD / origination 12m PD
+  sicr_absolute_threshold: 0.005  # and PD increase of at least 50 bps
+  watchlist_grade: 12             # CG12 or worse (PD >= ~9%) -> Stage 2
+  dpd_backstop: 30
+  reversion_years: 2              # logit reversion to through-the-cycle PD after the horizon
+  max_lifetime_years: 10
+
+rwa:
+  pd_floor: 0.0005                # Basel 3.1 corporate PD floor (5 bps)
+  scaling_factor: 1.0
+  firb_revenue_threshold_musd: 500   # large corporates -> F-IRB only (Basel 3.1)
+  firb_lgd_senior: 0.40
+  firb_lgd_senior_fi: 0.45
+  firb_lgd_subordinated: 0.75
+  firb_secured_lgd: {property: 0.20, receivables: 0.20, commodity: 0.25, cash: 0.0}
+  firb_collateral_haircut: {property: 0.40, receivables: 0.40, commodity: 0.40, cash: 0.0}
+  firb_ccf: {term_loan: 1.0, rcf: 0.40, trade_finance: 0.20, guarantee: 0.50}
+  airb_lgd_floor_unsecured: 0.25
+  airb_lgd_floor_secured: {property: 0.10, receivables: 0.10, commodity: 0.15, cash: 0.0}
+  sme_turnover_threshold_musd: 50
+  large_fi_assets_threshold_busd: 100
+  maturity_floor: 1.0
+  maturity_cap: 5.0
+
+capital:
+  starting_cet1_ratio: 0.140
+  other_rwa_multiple: 1.25        # non-modelled RWA (market, op, other credit) as a multiple of portfolio RWA
+  ppnr_bps_of_ead: 80             # annual pre-provision net revenue, bps of starting EAD
+  tax_rate: 0.25
+  hurdle_cet1_ratio: 0.100        # illustrative CET1 hurdle (minimum + buffers)
+
+checks:
+  topdown_benchmark_tolerance: 0.50   # |bottom-up / top-down - 1| above this -> amber
+  max_loss_rate_severe: 0.12          # cumulative 3y loss / EAD plausibility ceiling
+
+monitoring:
+  psi_amber: 0.10
+  psi_red: 0.25
+  gini_relative_drop_amber: 0.10
+  gini_relative_drop_red: 0.20
+  calibration_alpha: 0.05
+  bootstrap_samples: 300

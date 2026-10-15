@@ -1,0 +1,2 @@
+defect_id,test_id,severity,summary,root_cause,detected_by,raised,owner,status,retest
+DEF-001,UAT-RVER-002,S1,"REQ-UVT-02 Independent recomputation of survival, staging and ECL: expected Differences <= 1e-8 relative; actual 36 comparisons, 24 failed; max rel diff 5.2e-03",Seeded defect for UAT demonstration: SICR absolute-threshold condition dropped (relative test applied alone),UAT-RVER-002,2026-10-15,Model Implementation (Technology),Open,Pending fix
