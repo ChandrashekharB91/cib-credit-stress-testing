@@ -1,0 +1,100 @@
+{
+  "run_id": "sample_MST_2026Q4",
+  "created_utc": "2026-10-15T06:39:08+00:00",
+  "as_of_date": "2026-09-30",
+  "seed": 2026,
+  "package_version": "1.0.0",
+  "git_commit": "dfa5317",
+  "python": "3.13.16",
+  "scenarios": [
+    "baseline",
+    "adverse",
+    "severe"
+  ],
+  "input_hashes": {
+    "run_config": "d8bbf941a2ac2772407c6a79ce87ecea066bca3b941900dd909b2a4ebec0b205",
+    "scenarios": "77cf785f73a4579be7e19e287051d6624edc55ae86c683bcdc77aa9c1dd53a9c",
+    "sectors": "a91272a633b32a922dcd31809d113c5beea658ba25643a1fd55ba455b838c468",
+    "macro_history": "33470842f91b7e97e524a49bda18e3a0f70def9c45c3b153809462a00e0e9d29",
+    "dq_rules": "d3e7c34723029e67c7e1c3ea93c2cb37708902d37e9b7ae7ebdc306f7256ae8d"
+  },
+  "results_sha256": "6b1bda26cf851b3f0e1bf723831ee656ea19eb10e11d311300c621d655a14e59",
+  "steps": [
+    {
+      "step": "01",
+      "name": "configuration & input hashing",
+      "status": "OK",
+      "seconds": 0.0
+    },
+    {
+      "step": "02",
+      "name": "macro history & scenarios",
+      "status": "OK",
+      "seconds": 0.008
+    },
+    {
+      "step": "03",
+      "name": "data ingestion (synthetic CIB portfolio and default history)",
+      "status": "OK",
+      "seconds": 1.469
+    },
+    {
+      "step": "04",
+      "name": "data-quality rules & remediation",
+      "status": "OK",
+      "seconds": 0.037
+    },
+    {
+      "step": "05",
+      "name": "PD scorecard development & master scale",
+      "status": "OK",
+      "seconds": 0.107
+    },
+    {
+      "step": "06",
+      "name": "Z-factor challenger & scenario runs",
+      "status": "OK",
+      "seconds": 0.427
+    },
+    {
+      "step": "07",
+      "name": "IFRS 9 probability-weighted ECL",
+      "status": "OK",
+      "seconds": 0.0
+    },
+    {
+      "step": "08",
+      "name": "reconciliation controls",
+      "status": "OK",
+      "seconds": 0.01
+    },
+    {
+      "step": "09",
+      "name": "plausibility checks",
+      "status": "OK",
+      "seconds": 0.018
+    },
+    {
+      "step": "10",
+      "name": "sensitivity analysis (severe)",
+      "status": "OK",
+      "seconds": 1.893
+    },
+    {
+      "step": "11",
+      "name": "model monitoring",
+      "status": "OK",
+      "seconds": 4.145
+    }
+  ],
+  "dq": {
+    "rules_failing": 10,
+    "issues_logged": 109,
+    "open_escalations": 6
+  },
+  "controls_failed": 0,
+  "plausibility": {
+    "PASS": 16,
+    "AMBER": 1
+  }
+}

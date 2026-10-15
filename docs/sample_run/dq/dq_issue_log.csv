@@ -1,0 +1,110 @@
+rule_id,table,record_id,severity,action
+DQ-007,facilities,FAC900001,critical,"ESCALATED: excluded from run, raised with data owner"
+DQ-007,facilities,FAC900002,critical,"ESCALATED: excluded from run, raised with data owner"
+DQ-008,facilities,FAC000055,critical,REMEDIATED: duplicate rows removed (first occurrence kept)
+DQ-008,facilities,FAC001440,critical,REMEDIATED: duplicate rows removed (first occurrence kept)
+DQ-008,facilities,FAC002835,critical,REMEDIATED: duplicate rows removed (first occurrence kept)
+DQ-001,obligors,OBL00127,critical,REMEDIATED: sector derived from industry code
+DQ-001,obligors,OBL00138,critical,REMEDIATED: sector derived from industry code
+DQ-001,obligors,OBL00204,critical,REMEDIATED: sector derived from industry code
+DQ-001,obligors,OBL00950,critical,REMEDIATED: sector derived from industry code
+DQ-001,obligors,OBL01019,critical,REMEDIATED: sector derived from industry code
+DQ-001,obligors,OBL01354,critical,REMEDIATED: sector derived from industry code
+DQ-002,obligors,OBL00122,critical,"ESCALATED: excluded from run, raised with data owner"
+DQ-002,obligors,OBL00598,critical,"ESCALATED: excluded from run, raised with data owner"
+DQ-003,obligors,OBL00329,major,REMEDIATED: EBITDA restated at sector-norm margin; credit officer review requested
+DQ-003,obligors,OBL00352,major,REMEDIATED: EBITDA restated at sector-norm margin; credit officer review requested
+DQ-003,obligors,OBL00799,major,REMEDIATED: EBITDA restated at sector-norm margin; credit officer review requested
+DQ-003,obligors,OBL01380,major,REMEDIATED: EBITDA restated at sector-norm margin; credit officer review requested
+DQ-004,obligors,OBL00008,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00029,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00112,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00131,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00141,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00187,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00198,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00215,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00226,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00236,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00253,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00266,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00310,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00316,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00371,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00517,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00518,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00528,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00550,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00551,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00600,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00612,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00618,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00647,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00653,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00670,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00701,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00715,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00723,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00725,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00755,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00758,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00766,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00778,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00795,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00812,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00827,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00842,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00871,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00969,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL00981,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01039,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01140,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01141,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01166,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01177,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01211,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01215,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01224,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01243,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01254,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01313,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01344,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01349,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01355,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01374,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01438,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01446,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-004,obligors,OBL01495,major,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-005,facilities,FAC000107,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC000517,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC000564,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC000830,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001226,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001290,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001420,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001458,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001569,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001587,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001649,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001732,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC001827,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC002095,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC002333,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC002378,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-005,facilities,FAC003157,major,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-006,facilities,FAC000051,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC000312,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC000874,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC000943,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC001295,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC001442,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC001602,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC001625,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC001733,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-006,facilities,FAC002992,major,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-009,facilities,FAC000695,minor,REMEDIATED: collateral value set to zero (no credit risk mitigation)
+DQ-009,facilities,FAC001577,minor,REMEDIATED: collateral value set to zero (no credit risk mitigation)
+DQ-009,facilities,FAC002182,minor,REMEDIATED: collateral value set to zero (no credit risk mitigation)
+DQ-009,facilities,FAC002745,minor,REMEDIATED: collateral value set to zero (no credit risk mitigation)
+DQ-010,facilities,AME,major,ESCALATED: ledger break referred to Group Finance; results flagged
+DQ-010,facilities,EA,major,ESCALATED: ledger break referred to Group Finance; results flagged

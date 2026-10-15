@@ -128,7 +128,7 @@ def write_committee_pack(arts, path: Path) -> str:
     cap_t.columns = ["Year", "PPNR", "Impairment", "After-tax profit", "IRB EL shortfall", "Total RWA", "CET1", "CET1 ratio"]
     out.append(f"**Capital walk — {sev} scenario**\n")
     out.append(md_table(cap_t, {c: mn for c in ["PPNR", "Impairment", "After-tax profit", "IRB EL shortfall",
-                                                 "Total RWA", "CET1"]} | {"CET1 ratio": pct}))
+                                                 "Total RWA", "CET1"]} | {"CET1 ratio": pct, "Year": lambda x: str(int(x))}))
     out.append("")
 
     out.append(f"## 5. Key drivers ({sev} scenario)\n")

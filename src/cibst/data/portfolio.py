@@ -216,7 +216,9 @@ class PortfolioGenerator:
             product[sel] = rng.choice(list(mix), size=sel.sum(), p=list(mix.values()))
 
         share = rng.uniform(*self.pcfg["bank_share_of_debt"], n)
-        bank_total = (obl["debt"].to_numpy() * share)[idx]
+        # single-name concentration: total committed limits per obligor capped by the large-exposure appetite
+        cap = float(self.pcfg.get("max_obligor_limit_musd", np.inf))
+        bank_total = np.minimum(obl["debt"].to_numpy() * share, cap)[idx]
         wts = rng.gamma(1.0, 1.0, m)
         wsum = np.bincount(idx, weights=wts)[idx]
         limit = bank_total * wts / wsum

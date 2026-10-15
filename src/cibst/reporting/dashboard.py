@@ -69,7 +69,7 @@ def fig_macro(arts):
                                      line=dict(color=SCEN_COLOR.get(n), width=2), marker=dict(size=7)), row=r, col=c)
     fig.update_annotations(font=dict(size=12, color=INK2))
     f = _layout(fig, "Macro scenario paths", height=480)
-    f.update_layout(margin=dict(t=90), legend=dict(y=1.13, x=0, xanchor="left"))
+    f.update_layout(margin=dict(t=90), legend=dict(y=1.16, x=1, xanchor="right"))
     return f
 
 

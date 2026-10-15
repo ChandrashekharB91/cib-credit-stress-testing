@@ -1,0 +1,11 @@
+rule_id,table,dimension,description,severity,records_failing,exposure_impacted,status,remediation,resolution
+DQ-001,obligors,completeness,Sector must be populated,critical,6,497.5363862340649,FAIL,map_sector_from_industry_code,REMEDIATED: sector derived from industry code
+DQ-002,obligors,validity,Revenue must be strictly positive,critical,2,530.9173513965342,FAIL,exclude_and_escalate,"ESCALATED: excluded from run, raised with data owner"
+DQ-003,obligors,consistency,EBITDA cannot exceed revenue,major,4,728.4923234235514,FAIL,cap_ebitda_at_margin_p99,REMEDIATED: EBITDA restated at sector-norm margin; credit officer review requested
+DQ-004,obligors,timeliness,Financial statements no older than 18 months at the reporting date,major,59,6505.869866330265,FAIL,one_notch_conservative_downgrade,REMEDIATED: one-notch conservative PD overlay (post-model adjustment)
+DQ-005,facilities,consistency,Drawn balance cannot exceed approved limit,major,17,2345.4207542852355,FAIL,cap_drawn_at_limit,REMEDIATED: drawn capped at limit; limit breach referred to credit admin
+DQ-006,facilities,validity,Remaining maturity must be positive,major,10,635.0980969758974,FAIL,set_to_one_year,REMEDIATED: remaining maturity set to 1 year (conservative IRB M floor)
+DQ-007,facilities,integrity,Every facility must reference an existing obligor,critical,2,43.42650204306406,FAIL,exclude_and_escalate,"ESCALATED: excluded from run, raised with data owner"
+DQ-008,facilities,uniqueness,Facility identifiers must be unique,critical,3,7.88860465474622,FAIL,drop_duplicates_keep_first,REMEDIATED: duplicate rows removed (first occurrence kept)
+DQ-009,facilities,validity,Collateral value cannot be negative,minor,4,1363.6398099950145,FAIL,set_to_zero,REMEDIATED: collateral value set to zero (no credit risk mitigation)
+DQ-010,facilities,reconciliation,Drawn balances reconcile to finance ledger control totals by region (0.5% tolerance),major,2,358.3897223132735,FAIL,escalate_to_finance,ESCALATED: ledger break referred to Group Finance; results flagged

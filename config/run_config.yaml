@@ -19,6 +19,7 @@ portfolio:
   history_obligors_per_year: 1500
   dev_end_year: 2021            # 2006-2021 development sample, 2022-2025 out-of-time
   bank_share_of_debt: [0.08, 0.30]
+  max_obligor_limit_musd: 3000      # single-name limit appetite (USD m)
   initial_default_rate: 0.012   # share of obligors already in default at the reporting date
   inject_dq_issues: true        # seed realistic data-quality defects for the DQ engine
 

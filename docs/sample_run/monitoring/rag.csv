@@ -1,0 +1,7 @@
+area,metric,value,threshold,status
+Stability,Score PSI (dev vs current),0.020986109987904695,amber 0.1 / red 0.25,GREEN
+Stability,Max characteristic CSI,0.3582068581719282,amber 0.1 / red 0.25,RED
+Discrimination,Gini relative drop (OOT vs dev),0.09867082756084235,amber 10% / red 20%,GREEN
+Calibration,Grades failing Jeffreys test (OOT),2.0,any red grade -> RED; any amber -> AMBER,RED
+Calibration,Hosmer-Lemeshow p-value (OOT),0.13504610075170487,amber < 0.05 / red < 0.01,GREEN
+Satellite,Z-factor OOS RMSE / in-sample RMSE,3.7538741033531404,amber > 1.5 / red > 2.5,RED

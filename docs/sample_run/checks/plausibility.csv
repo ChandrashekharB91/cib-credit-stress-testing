@@ -1,0 +1,18 @@
+check_id,description,value,threshold,status
+PL-01,ECL ordered baseline <= adverse <= severe at every date,ordered,monotone,PASS
+PL-02,Peak RWA ordered across scenarios,"baseline 168,716, adverse 183,755, severe 212,629",monotone,PASS
+PL-03,CET1 trough ordered across scenarios,"baseline 14.00%, adverse 13.40%, severe 11.98%",monotone,PASS
+PL-04,"All PDs finite and within [0, 1]",ok,"[0, 1]",PASS
+PL-05,Year-1 Stage 2 share rises with scenario severity,"baseline 8.4%, adverse 21.6%, severe 41.1%",monotone,PASS
+PL-06,"ECL coverage within [0, 100%]",max 7.43%,"[0, 1]",PASS
+PL-07,Severe cumulative impairment / starting EAD below plausibility ceiling,4.61%,<= 12%,PASS
+PL-08-BAS,Bottom-up vs top-down cumulative 3y PD (baseline),BU 6.18% / TD 5.15% = 1.20x,within 1 +/- 0.50,PASS
+PL-09-BAS,Satellite drivers inside calibration range (baseline),all inside,historical min/max,PASS
+PL-08-ADV,Bottom-up vs top-down cumulative 3y PD (adverse),BU 9.68% / TD 11.60% = 0.83x,within 1 +/- 0.50,PASS
+PL-09-ADV,Satellite drivers inside calibration range (adverse),all inside,historical min/max,PASS
+PL-08-SEV,Bottom-up vs top-down cumulative 3y PD (severe),BU 19.36% / TD 17.86% = 1.08x,within 1 +/- 0.50,PASS
+PL-09-SEV,Satellite drivers inside calibration range (severe),unemployment_change,historical min/max,AMBER
+PL-10,Commodity collapse: commodity sectors' severe/baseline loss multiple above portfolio,"oil_gas 4.7x, metals_mining 4.8x, commodity_traders 4.8x vs portfolio 2.9x",> portfolio multiple,PASS
+PL-11,Probability-weighted ECL lies between scenario ECLs,"3,555 in [2,983, 6,400]",bounded,PASS
+PL-12,Stage allocation conserves exposure (S1 + S2 + S3 = EAD),max rel diff 1.4e-16,< 1e-9,PASS
+PL-13,Baseline CET1 change is moderate (baseline is not a stress),+115 bps,within +/- 250 bps,PASS

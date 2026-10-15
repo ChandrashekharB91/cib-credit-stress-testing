@@ -1,0 +1,12 @@
+control,scenario,description,expected,actual,status
+C-01,baseline,Facility count: post-DQ input vs engine output,3203.0,3203.0,PASS
+C-02,baseline,Reporting-date EAD: recomputed from post-DQ input file vs engine output,205384.3785,205384.3785,PASS
+C-01,adverse,Facility count: post-DQ input vs engine output,3203.0,3203.0,PASS
+C-02,adverse,Reporting-date EAD: recomputed from post-DQ input file vs engine output,205384.3785,205384.3785,PASS
+C-01,severe,Facility count: post-DQ input vs engine output,3203.0,3203.0,PASS
+C-02,severe,Reporting-date EAD: recomputed from post-DQ input file vs engine output,205384.3785,205384.3785,PASS
+C-03,all,Reporting-date EAD identical across scenarios,0.0,0.0,PASS
+C-04,all,Reporting-date RWA identical across scenarios,0.0,0.0,PASS
+C-05,baseline,Sector ECL sums to portfolio ECL,0.0,9.094947017729282e-13,PASS
+C-05,adverse,Sector ECL sums to portfolio ECL,0.0,9.094947017729282e-13,PASS
+C-05,severe,Sector ECL sums to portfolio ECL,0.0,0.0,PASS
